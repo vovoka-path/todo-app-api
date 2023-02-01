@@ -1,4 +1,4 @@
-const tokenService = require('../services/tokenService');
+const tokenService = require('../services/TokenService');
 const ApiError = require('../exceptions/apiError');
 
 function authMiddleware(req, res, next) {
