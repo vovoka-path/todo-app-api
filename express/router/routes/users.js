@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { models } = require('../../../sequelize');
-const UserDto = require('../dtos/UserDto');
+const UserDto = require('../dtos/userDto');
 const tokenService = require('../../services/TokenService');
 
 require('dotenv').config();
