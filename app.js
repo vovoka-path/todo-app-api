@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const router = require('./router/router');
-const errorMiddleware = require('./middlewares/errorMiddleware');
+const router = require('./express/router/router');
+const errorMiddleware = require('./express/middlewares/errorMiddleware');
 
 require('dotenv').config();
 const CLIENT_URL = process.env.CLIENT_URL;
