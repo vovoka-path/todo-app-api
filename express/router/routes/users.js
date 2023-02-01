@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt');
 const { models } = require('../../../sequelize');
 const UserDto = require('../dtos/userDto');
+const ApiError = require('../../exceptions/apiError');
 const tokenService = require('../../services/TokenService');
-
+ApiError
 require('dotenv').config();
 
 async function getAll(req, res) {
