@@ -20,7 +20,7 @@ app.use(
     origin: CLIENT_URL || '*',
   })
 );
-app.use('/', router);
+app.use('/api', router);
 app.use(errorMiddleware);
 
 app.get('/', (req, res) => {
