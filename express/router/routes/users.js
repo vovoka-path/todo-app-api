@@ -3,7 +3,7 @@ const { models } = require('../../../sequelize');
 const UserDto = require('../dtos/userDto');
 const ApiError = require('../../exceptions/apiError');
 const tokenService = require('../../services/TokenService');
-ApiError
+
 require('dotenv').config();
 
 async function getAll(req, res) {
@@ -78,14 +78,16 @@ async function refresh(req, res) {
     },
   });
   if (!tokenDataFromDB) {
-    res.status(200).json(await createResponseFromUserData(userData));
+    const response = await createResponseFromUserData(userData);
+    res.status(200).json(response);
   } else {
     const userInDB = await models.user.findOne({
       where: {
         login: tokenDataFromDB.login,
       },
     });
-    res.status(200).json(await createResponseFromUserData(userInDB));
+    const response = await createResponseFromUserData(userData);
+    res.status(200).json(response);
   }
   return res;
 }

@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     credentials: true,
-    origin: CLIENT_URL || '*',
+    origin: CLIENT_URL,
   })
 );
 app.use('/api', router);
