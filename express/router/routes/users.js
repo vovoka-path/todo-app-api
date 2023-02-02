@@ -72,6 +72,9 @@ async function refresh(req, res) {
   }
   const userData = tokenService.verifyRefreshToken(refreshToken);
   const tokenFromDb = await tokenService.findRefreshToken(refreshToken);
+  if (!userData || !tokenFromDb) {
+    throw ApiError.UnauthorizedError();
+  }
   const tokenDataFromDB = await models.token.findOne({
     where: {
       refreshToken: refreshToken,
@@ -86,7 +89,7 @@ async function refresh(req, res) {
         login: tokenDataFromDB.login,
       },
     });
-    const response = await createResponseFromUserData(userData);
+    const response = await createResponseFromUserData(userInDB);
     res.status(200).json(response);
   }
   return res;
