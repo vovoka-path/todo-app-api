@@ -72,9 +72,6 @@ async function refresh(req, res) {
   }
   const userData = tokenService.verifyRefreshToken(refreshToken);
   const tokenFromDb = await tokenService.findRefreshToken(refreshToken);
-  if (!userData || !tokenFromDb) {
-    throw ApiError.UnauthorizedError();
-  }
   const tokenDataFromDB = await models.token.findOne({
     where: {
       refreshToken: refreshToken,
