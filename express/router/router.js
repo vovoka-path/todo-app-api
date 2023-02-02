@@ -55,7 +55,7 @@ for (const [routeName, routeController] of Object.entries(routes)) {
     );
   }
   if (routeController.refresh) {
-    router.post(
+    router.get(
       `/${routeName}/refresh`,
       asyncErrorsHandler(routeController.refresh)
     );
