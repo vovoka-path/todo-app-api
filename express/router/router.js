@@ -54,6 +54,12 @@ for (const [routeName, routeController] of Object.entries(routes)) {
       asyncErrorsHandler(routeController.signout)
     );
   }
+  if (routeController.checkauth) {
+    router.post(
+      `/${routeName}/checkauth`,
+      asyncErrorsHandler(routeController.checkauth)
+    );
+  }
   if (routeController.refresh) {
     router.get(
       `/${routeName}/refresh`,
