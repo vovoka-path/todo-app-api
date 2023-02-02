@@ -1,4 +1,4 @@
-const getIdAsNumber = (req) => {
+function getIdAsNumber (req) {
   const id = req.params.id;
   if (/^\d+$/.test(id)) {
     return Number.parseInt(id, 10);
