@@ -1,7 +1,10 @@
 const { models } = require('../../../sequelize');
 const { getIdAsNumber } = require('../../helpers/utils');
+const { cookieOption } = require('../../helpers/utils');
 
 async function getAll(req, res) {
+  const { refreshToken } = req.cookies;
+  res.cookie('refreshToken', refreshToken, cookieOption);
   const todos = await models.todo.findAll();
   if (todos) {
     res.status(200).json(todos);
@@ -11,6 +14,8 @@ async function getAll(req, res) {
 }
 
 async function getById(req, res) {
+  const { refreshToken } = req.cookies;
+  res.cookie('refreshToken', refreshToken, cookieOption);
   const id = getIdAsNumber(req);
   const todo = await models.todo.findByPk(id);
   if (todo) {
@@ -21,6 +26,8 @@ async function getById(req, res) {
 }
 
 async function create(req, res) {
+  const { refreshToken } = req.cookies;
+  res.cookie('refreshToken', refreshToken, cookieOption);
   if (req.body.id) {
     res.status(400).send(`Bad request: Todo with id=${id} already exists!`);
   } else {
@@ -30,6 +37,8 @@ async function create(req, res) {
 }
 
 async function updateById(req, res) {
+  const { refreshToken } = req.cookies;
+  res.cookie('refreshToken', refreshToken, cookieOption);
   const id = getIdAsNumber(req);
   if (+req.body.id === id) {
     const todoFromDB = await models.todo.findOne({
@@ -51,6 +60,8 @@ async function updateById(req, res) {
 }
 
 async function removeById(req, res) {
+  const { refreshToken } = req.cookies;
+  res.cookie('refreshToken', refreshToken, cookieOption);
   const id = getIdAsNumber(req);
   await models.todo.destroy({
     where: {

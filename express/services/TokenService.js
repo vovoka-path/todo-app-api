@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { models } = require('../../sequelize');
+const { models } = require('../../sequelize/index');
 const ConsoleLogger = require('../helpers/consoleLogger.js');
 
 require('dotenv').config();
@@ -10,19 +10,15 @@ class TokenService {
       access: process.env.ACCESS_SECRET_KEY || 'your-access-secret-key',
       refresh: process.env.REFRESH_SECRET_KEY || 'your-refresh-secret-key',
     };
-    this.expires = {
-      access: process.env.ACCESS_TOKEN_EXPIRES_MINUTES || '30m',
-      refresh: process.env.REFRESH_TOKEN_EXPIRES_DAYS || '30d',
-    };
   }
 
   getNewTokens(userData) {
     try {
       const accessToken = jwt.sign(userData, this.key.access, {
-        expiresIn: this.expires.access,
+        expiresIn: 1 * 60 * 1000,
       });
       const refreshToken = jwt.sign(userData, this.key.refresh, {
-        expiresIn: this.expires.refresh,
+        expiresIn: 30 * 24 * 60 * 60 * 1000,
       });
       return { accessToken, refreshToken };
     } catch (e) {
@@ -58,9 +54,7 @@ class TokenService {
       refreshTokenData.refreshToken = refreshToken;
       return refreshTokenData.save();
     }
-
     const token = await models.token.create({ login, refreshToken });
-
     return token;
   }
 
@@ -74,8 +68,9 @@ class TokenService {
   }
 
   async findRefreshToken(refreshToken) {
-    const refreshTokenData = await models.token.findOne({
-      where: { refreshToken: refreshToken },
+    const refreshTokenData = await models.token.findAll({
+      limit: 1,
+      where: { refreshToken },
     });
     return refreshTokenData;
   }

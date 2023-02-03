@@ -11,7 +11,8 @@ const routes = {
 
 for (const [routeName, routeController] of Object.entries(routes)) {
   if (routeController.getAll) {
-    router.get(`/${routeName}`, asyncErrorsHandler(routeController.getAll));
+    router.get(`/${routeName}`, 
+    asyncErrorsHandler(routeController.getAll));
   }
   if (routeController.getById) {
     router.get(
@@ -20,7 +21,8 @@ for (const [routeName, routeController] of Object.entries(routes)) {
     );
   }
   if (routeController.create) {
-    router.post(`/${routeName}`, asyncErrorsHandler(routeController.create));
+    router.post(`/${routeName}`, 
+    asyncErrorsHandler(routeController.create));
   }
   if (routeController.updateById) {
     router.put(
