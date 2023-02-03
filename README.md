@@ -15,7 +15,7 @@ Created for BeeGee.
 ### Frontend (Todo app) for this API
 
 - [Source code](https://github.com/vovoka-path/todo-app)
-- [Deploy](https://todo-app-api-production.up.railway.app/)
+- [Deploy](https://todo-app-beegee.vercel.app)
 
 ### REST endpoints
 
