@@ -1,42 +1,59 @@
 # todo-app-api
-Created for BeeGee
+Created for BeeGee.
+
+##### [Source code](https://github.com/vovoka-path/todo-app-api) | [Deploy](https://todo-app-api-production.up.railway.app/)
+
+### Stack
+
+- Node.js
+- Express
+- MySQL
+- Sequelize
+- jsonwebtoken
+- bcrypt
+
+### Frontend (Todo app) for this API
+
+- [Source code](https://github.com/vovoka-path/todo-app)
+- [Deploy](https://todo-app-api-production.up.railway.app/)
+
+### REST endpoints
+
+#### Todos
+###### Get all:  `GET` `/api/todos`
+###### Get by id: `GET` `/api/todos/:id`
+###### Create: `POST` `/api/todos` 
+Body: { userName, email, title, isDone, isEdited }
+###### Update: `PUT` `/api/todos/:id`
+Body: { id, title, isDone, isEdited }
+###### Delete: `DELETE` `/api/todos/:id`
+
+#### Users
+###### Sign up: `POST` `/api/users/signup`
+Body: { login, password }
+###### Sign in: `POST` `/api/users/signin`
+Body: { login, password }
+###### Sign out: `POST` `/api/users/signout`
+###### Check authorization: `POST` `/api/users/checkauth`
+###### Refresh tokens/authorization: `GET` `/api/users/refresh`
+
+### Install
+
+###### `npm i`
+
+### Available Scripts
+
+###### `npm run develop`
+
+You will also see logs in the console.
 
 ### Developer
 
 [Vladimir Polansky](https://vovoka.space)
 
-## Stack
+### Contact me:
 
-- Node.js
-- Express
-- Sequelize
-- MySQL
-- jsonwebtoken
-- bcrypt
-
-## Deploy
-
-- [Link](https://todo-app-api-production.up.railway.app/)
-
-## Source code
-
-- [Repository](https://github.com/vovoka-path/todo-app-api)
-
-## Frontend
-
-- [Deploy](https://todo-app-api-production.up.railway.app/)
-- [Todo app repository](https://github.com/vovoka-path/todo-app)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run develop`
-
-You will also see logs in the console.
-
-<h3 align="center">Contact me:</h3>
-<p align="center">
+<p align="left">
   <a href="https://www.linkedin.com/in/areawed">
     <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&color=f0f6fc&logo=linkedin&logoColor=0A66C2" height="32" />
   </a>
