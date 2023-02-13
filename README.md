@@ -47,6 +47,19 @@ Body: { login, password }
 
 You will also see logs in the console.
 
+## Enviroment variables
+
+`CLIENT_URL="https://todo-app-api-production.up.railway.app/"`
+`PORT=8080`
+`DATABASE_NAME="DB name"`
+`DATABASE_HOST="DB host"`
+`DATABASE_USERNAME="DB username"`
+`DATABASE_PASSWORD="DB password"`
+`DATABASE_DIALECT="mysql"`
+`SALT_ROUNDS=5`
+`ACCESS_SECRET_KEY="some-words"`
+`REFRESH_SECRET_KEY="some-another-words"`
+
 ### Developer
 
 [Vladimir Polansky](https://vovoka.space)
